@@ -30,13 +30,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    _counter++;
-    setState(() {});
-  }
-
   final dio = Dio();
   final url = 'https://api.github.com/users';
   final controller = TextEditingController();
@@ -59,29 +52,41 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text(widget.title)),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            const SizedBox(height: 100),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                  'enter the request you want to send and press the send button:'),
             ),
-            const Text(
-                'enter the request you want to send and press the send button:'),
-            TextField(controller: controller),
-            IconButton(
+            const SizedBox(height: 18),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(controller: controller),
+            ),
+            const SizedBox(height: 18),
+            // OutlinedButton.icon(onPressed: onPressed, icon: icon, label: label)
+            OutlinedButton.icon(
               onPressed: () {
                 dio.get(controller.text);
               },
-              icon: const Icon(Icons.send),
+              label: const Icon(Icons.send),
+              icon: const Text("send"),
             )
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const HttpLogListWidget(),
+            ),
+          );
+        },
+        tooltip: 'developer_board',
+        child: const Icon(Icons.developer_board),
       ),
     );
   }

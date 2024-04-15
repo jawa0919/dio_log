@@ -2,45 +2,54 @@
 
 [![pub package](https://img.shields.io/pub/v/dio_log_plus.svg)](https://pub.dev/packages/dio_log_plus)
 
-Language: [English](README.md) | [中文简体](README_zh.md)
+Language: [English](./README.md) | [中文简体](./README_zh.md)
 
-flutter 的 HTTP 检查器工具，可以帮助调试 HTTP 请求，目前实现了基于 dio 的 http 捕获
+HTTP Inspector tool for Dart which can debugging http requests，Currently, DIO based HTTP capture is implemented
 
-当然你可以通过自己实现 Interceptor 来代替 DioLogInterceptor 来适配其他 Http client
+Of course, you can implement an Interceptor instead of a DiologInterceptor to adapt to other HTTP clients
 
-## 添加依赖
+### Screenshot
+
+| ----                                                                          | ----                                                                          | ---                                                                           | ---                                                                           |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| <img src="./doc/Screenshot/adbHelper_Screenshot_20240415142901.png" alt="1" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415142956.png" alt="2" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415150216.png" alt="3" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415143136.png" alt="4" > |
+
+### Add dependency
 
 ```yaml
-## flutter: ">=3.10.0 <4.0.0"
+## flutter: ">=3.10.0"
+## dio: ">=5.0.0 <6.0.0"
 dependencies:
-  dio_log_plus: ^4.0.0
+  dio_log_plus: ^4
 ```
 
-### 老版本 flutter: ">=1.17.0 <3.10.0"
+low version
 
 ```yaml
+## flutter: ">=1.17.0"
+## dio: ">=4.0.0 <5.0.0"
 dependencies:
   dio_log_plus: ^3.7.12
 ```
 
-## 给 dio 设置监听
+### set interceptor of dio
 
 ```dart
 dio.interceptors.add(DioLogInterceptor());
 ```
 
-## 在你的主页面添加全局的悬浮按钮，用于跳转日志列表
+### Add a global hover button on your home page to jump through the log list
 
 ```dart
-/// 显示悬浮按钮
+///display overlay button
 showDebugBtn(context,btnColor: Colors.blue);
-/// 取消悬浮按钮
+///cancel overlay button
 dismissDebugBtn();
-/// 悬浮按钮展示状态
+///overlay button state of display
 debugBtnIsShow()
 ```
 
-## 或者在你期望的地方打开日志列表
+### Or open a log list where you want it to be
 
 ```dart
 Navigator.of(context).push(
@@ -50,19 +59,17 @@ Navigator.of(context).push(
   );
 ```
 
-## 其他可设置参数
+### Other configurable parameters
 
 ```dart
-/// 设置记录日志的最大条数
+/// Sets the maximum number of entries for logging
 LogPoolManager.getInstance().maxCount = 100;
-/// 将isError方法实现添加到LogPoolManager，以便将定义为错误的请求消息显示为红色字体
+///Add the isError method implementation to LogPoolManager so that request messages defined as errors are displayed in red font
 LogPoolManager.getInstance().isError = (res) => res.resOptions==null;
-/// 关闭打印
+///Disabling Log Printing
 DioLogInterceptor.enablePrintLog = false;
 ```
 
 ## Thanks
 
-[dio_log](https://pub.flutter-io.cn/packages/dio_log)
-
-## Screenshot
+[dio_log](https://pub.dev/packages/dio_log)
