@@ -2,23 +2,32 @@
 
 [![pub package](https://img.shields.io/pub/v/dio_log_plus.svg)](https://pub.dev/packages/dio_log_plus)
 
-Language: [English](README.md) | [中文简体](README_zh.md)
+Language: [English](./README.md) | [中文简体](./README_zh.md)
 
 HTTP Inspector tool for Dart which can debugging http requests，Currently, DIO based HTTP capture is implemented
 
 Of course, you can implement an Interceptor instead of a DiologInterceptor to adapt to other HTTP clients
 
+### Screenshot
+
+| ----                                                                          | ----                                                                          | ---                                                                           | ---                                                                           |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| <img src="./doc/Screenshot/adbHelper_Screenshot_20240415142901.png" alt="1" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415142956.png" alt="2" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415150216.png" alt="3" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415143136.png" alt="4" > |
+
 ### Add dependency
 
 ```yaml
-## flutter: ">=3.10.0 <4.0.0"
+## flutter: ">=3.10.0"
+## dio: ">=5.0.0 <6.0.0"
 dependencies:
-  dio_log_plus: ^4.0.0
+  dio_log_plus: ^4
 ```
 
-### old version flutter: ">=1.17.0 <3.10.0"
+low version
 
 ```yaml
+## flutter: ">=1.17.0"
+## dio: ">=4.0.0 <5.0.0"
 dependencies:
   dio_log_plus: ^3.7.12
 ```
@@ -63,6 +72,4 @@ DioLogInterceptor.enablePrintLog = false;
 
 ## Thanks
 
-[dio_log](https://pub.flutter-io.cn/packages/dio_log)
-
-### Screenshot
+[dio_log](https://pub.dev/packages/dio_log)

@@ -4,9 +4,9 @@
 
 Language: [English](./README.md) | [中文简体](./README_zh.md)
 
-HTTP Inspector tool for Dart which can debugging http requests，Currently, DIO based HTTP capture is implemented
+flutter 的 HTTP 检查器工具，可以帮助调试 HTTP 请求，目前实现了基于 dio 的 http 捕获
 
-Of course, you can implement an Interceptor instead of a DiologInterceptor to adapt to other HTTP clients
+当然你可以通过自己实现 Interceptor 来代替 DioLogInterceptor 来适配其他 Http client
 
 ### Screenshot
 
@@ -14,7 +14,7 @@ Of course, you can implement an Interceptor instead of a DiologInterceptor to ad
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415142901.png" alt="1" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415142956.png" alt="2" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415150216.png" alt="3" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415143136.png" alt="4" > |
 
-### Add dependency
+## 添加依赖
 
 ```yaml
 ## flutter: ">=3.10.0"
@@ -23,33 +23,33 @@ dependencies:
   dio_log_plus: ^4
 ```
 
-low version
+低版本
 
 ```yaml
-## flutter: ">=1.17.0"
-## dio: ">=4.0.0 <5.0.0"
+## flutter: ">=1.17.0 <3.10.0"
+## dio: ">=5.0.0 <6.0.0"
 dependencies:
   dio_log_plus: ^3.7.12
 ```
 
-### set interceptor of dio
+## 给 dio 设置监听
 
 ```dart
 dio.interceptors.add(DioLogInterceptor());
 ```
 
-### Add a global hover button on your home page to jump through the log list
+## 在你的主页面添加全局的悬浮按钮，用于跳转日志列表
 
 ```dart
-///display overlay button
+/// 显示悬浮按钮
 showDebugBtn(context,btnColor: Colors.blue);
-///cancel overlay button
+/// 取消悬浮按钮
 dismissDebugBtn();
-///overlay button state of display
+/// 悬浮按钮展示状态
 debugBtnIsShow()
 ```
 
-### Or open a log list where you want it to be
+## 或者在你期望的地方打开日志列表
 
 ```dart
 Navigator.of(context).push(
@@ -59,17 +59,17 @@ Navigator.of(context).push(
   );
 ```
 
-### Other configurable parameters
+## 其他可设置参数
 
 ```dart
-/// Sets the maximum number of entries for logging
+/// 设置记录日志的最大条数
 LogPoolManager.getInstance().maxCount = 100;
-///Add the isError method implementation to LogPoolManager so that request messages defined as errors are displayed in red font
+/// 将isError方法实现添加到LogPoolManager，以便将定义为错误的请求消息显示为红色字体
 LogPoolManager.getInstance().isError = (res) => res.resOptions==null;
-///Disabling Log Printing
+/// 关闭打印
 DioLogInterceptor.enablePrintLog = false;
 ```
 
 ## Thanks
 
-[dio_log](https://pub.dev/packages/dio_log)
+[dio_log](https://pub.flutter-io.cn/packages/dio_log)
