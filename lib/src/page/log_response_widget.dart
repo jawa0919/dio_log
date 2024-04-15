@@ -59,8 +59,8 @@ class _LogResponseWidgetState extends State<LogResponseWidget>
             color: Colors.red,
           ),
         ),
-        _buildJsonView('headers:', response?.headers),
-        _buildJsonView('response.data:', json),
+        _buildJsonView('headers', response?.headers),
+        _buildJsonView('response.data', json),
       ],
     ));
   }
@@ -70,22 +70,30 @@ class _LogResponseWidgetState extends State<LogResponseWidget>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        ElevatedButton(
-          onPressed: () {
-            copyClipboard(context, toJson(json));
-          },
-          child: const Text('copy json'),
-        ),
-        Text(
-          '$key',
-          style: TextStyle(
-            fontSize: fontSize,
+        ListTile(
+          title: Align(
+            alignment: Alignment.bottomLeft,
+            child: Text(
+              '$key:',
+              style: TextStyle(
+                fontSize: fontSize,
+              ),
+            ),
+          ),
+          trailing: OutlinedButton(
+            onPressed: () {
+              copyClipboard(context, toJson(json));
+            },
+            child: Text('copy $key json'),
           ),
         ),
-        JsonView(
-          json: json,
-          isShowAll: isShowAll,
-          fontSize: fontSize,
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: JsonView(
+            json: json,
+            isShowAll: isShowAll,
+            fontSize: fontSize,
+          ),
         ),
       ],
     );

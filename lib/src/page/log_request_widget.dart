@@ -64,7 +64,7 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
               'Tip: long press a key to copy the value to the clipboard',
               style: TextStyle(fontSize: 10, color: Colors.red),
             ),
-            ElevatedButton(
+            OutlinedButton(
               onPressed: () {
                 copyClipboard(
                     context,

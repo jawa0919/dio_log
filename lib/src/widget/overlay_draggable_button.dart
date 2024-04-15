@@ -45,7 +45,7 @@ class DraggableButtonWidget extends StatefulWidget {
 class _DraggableButtonWidgetState extends State<DraggableButtonWidget> {
   double left = 30;
   double top = 100;
-  double btnSize = 44;
+  double btnSize = 40;
 
   late double screenWidth;
   late double screenHeight;
@@ -76,7 +76,7 @@ class _DraggableButtonWidgetState extends State<DraggableButtonWidget> {
         height: btnSize,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: color.withOpacity(0.4),
+          color: color.withOpacity(0.3),
         ),
         child: Icon(
           Icons.developer_board,
@@ -86,7 +86,7 @@ class _DraggableButtonWidgetState extends State<DraggableButtonWidget> {
       ),
     );
 
-    ///计算偏移量限制
+    /// 计算偏移量限制
     if (left < 1) {
       left = 1;
     }
@@ -94,6 +94,7 @@ class _DraggableButtonWidgetState extends State<DraggableButtonWidget> {
       left = screenWidth - btnSize;
     }
 
+    /// 安全区
     if (top < screenTop) {
       top = screenTop;
     }

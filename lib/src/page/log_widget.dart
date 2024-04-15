@@ -52,6 +52,7 @@ class _LogWidgetState extends State<LogWidget>
       ),
       body: PageView.builder(
         controller: _pageController,
+        physics: const NeverScrollableScrollPhysics(),
         onPageChanged: _onPageChanged,
         itemCount: 3,
         itemBuilder: (BuildContext context, int index) {
