@@ -10,9 +10,9 @@ Of course, you can implement an Interceptor instead of a DiologInterceptor to ad
 
 ### Screenshot
 
-| ----                                                                          | ----                                                                          | ---                                                                           | ---                                                                           |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| <img src="./doc/Screenshot/adbHelper_Screenshot_20240415142901.png" alt="1" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415142956.png" alt="2" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415150216.png" alt="3" > | <img src="./doc/Screenshot/adbHelper_Screenshot_20240415143136.png" alt="4" > |
+|                   |                   |                   |                   |
+| ----------------- | ----------------- | ----------------- | ----------------- |
+| ![a](./doc/a.png) | ![b](./doc/b.png) | ![c](./doc/c.png) | ![d](./doc/d.png) |
 
 ### Add dependency
 
