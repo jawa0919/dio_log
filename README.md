@@ -2,7 +2,7 @@
 
 [![pub package](https://img.shields.io/pub/v/dio_log_plus.svg)](https://pub.dev/packages/dio_log_plus)
 
-Language: [English README](/README.md) | [中文简体 README](/README_zh.md)
+Language: [English README](./README.md) | [中文简体 README](./README_zh.md)
 
 HTTP Inspector tool for Dart which can debugging http requests，Currently, DIO based HTTP capture is implemented
 

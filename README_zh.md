@@ -2,7 +2,7 @@
 
 [![pub package](https://img.shields.io/pub/v/dio_log_plus.svg)](https://pub.dev/packages/dio_log_plus)
 
-Language: [English README](/README.md) | [中文简体 README](/README_zh.md)
+Language: [English README](./README.md) | [中文简体 README](./README_zh.md)
 
 flutter 的 HTTP 检查器工具，可以帮助调试 HTTP 请求，目前实现了基于 dio 的 http 捕获
 
