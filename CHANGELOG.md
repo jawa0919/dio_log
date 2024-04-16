@@ -1,6 +1,4 @@
-## version: 5.0.0
-
-<!-- todo -->
+<!-- ## version: 5.0.0
 
 ```yaml
 environment:
@@ -11,15 +9,13 @@ dependencies:
   flutter:
     sdk: flutter
   dio: ">=5.0.0 <6.0.0"
-```
+``` -->
 
 ## version: 4.0.2
 
-<!-- todo -->
-
 ```yaml
 environment:
-  sdk: ">=2.12.0 <3.10.0"
+  sdk: ">=2.12.0 <5.0.0"
   flutter: ">=2.0.0"
 
 dependencies:
