@@ -1,18 +1,6 @@
-## version: 4.0.1
+## version: 5.0.0
 
-- fix docs
-
-- fix ui
-
-## version: 4.0.0
-
-- support [dio5+](https://pub.dev/packages/dio)
-
-- mini dart version 3.0.0
-
-- mini flutter version 3.10.0
-
-- mini dio version 5.0.0
+<!-- todo -->
 
 ```yaml
 environment:
@@ -25,20 +13,30 @@ dependencies:
   dio: ">=5.0.0 <6.0.0"
 ```
 
-## version: 3.7.12
+## version: 4.0.2
 
-- support [dio](https://pub.dev/packages/dio)
+<!-- todo -->
 
 ```yaml
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: ">=2.12.0 <3.10.0"
+  flutter: ">=2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  dio: ">=4.0.0 <5.0.0"
+  dio: ">=4.0.0 <6.0.0"
 ```
+
+## version: 4.0.1
+
+- fix doc
+
+- fix ui
+
+## version: 3.7.12
+
+- support [dio](https://pub.dev/packages/dio)
 
 ## version: 2.0.4
 
