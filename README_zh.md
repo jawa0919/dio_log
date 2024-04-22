@@ -31,7 +31,7 @@ dio.interceptors.add(DioLogInterceptor());
 
 ```dart
 /// 显示悬浮按钮
-showDebugBtn(context,btnColor: Colors.blue);
+showDebugBtn(context, btnColor: Colors.blue);
 /// 取消悬浮按钮
 dismissDebugBtn();
 /// 悬浮按钮展示状态
@@ -41,11 +41,11 @@ debugBtnIsShow()
 ## 或者在你期望的地方打开日志列表
 
 ```dart
-Navigator.of(context).push(
-    MaterialPageRoute(
-      builder: (context) => HttpLogListWidget(),
-    ),
-  );
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => HttpLogListWidget(),
+      ),
+    );
 ```
 
 ## 其他可设置参数

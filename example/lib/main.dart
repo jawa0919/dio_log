@@ -56,37 +56,24 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             const SizedBox(height: 100),
             const Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(18.0),
               child: Text(
                   'enter the request you want to send and press the send button:'),
             ),
-            const SizedBox(height: 18),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(18.0),
               child: TextField(controller: controller),
             ),
-            const SizedBox(height: 18),
-            // OutlinedButton.icon(onPressed: onPressed, icon: icon, label: label)
+            const SizedBox(height: 32),
             OutlinedButton.icon(
               onPressed: () {
                 dio.get(controller.text);
               },
-              label: const Icon(Icons.send),
-              icon: const Text("send"),
+              label: const Icon(Icons.send_rounded),
+              icon: const Text("Send"),
             )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const HttpLogListWidget(),
-            ),
-          );
-        },
-        tooltip: 'developer_board',
-        child: const Icon(Icons.developer_board),
       ),
     );
   }

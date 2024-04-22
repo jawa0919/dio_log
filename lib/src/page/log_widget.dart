@@ -21,34 +21,41 @@ class _LogWidgetState extends State<LogWidget>
     const Tab(text: "response"),
   ];
 
-  PageController? _pageController;
+  PageController _pageController = PageController(initialPage: 0);
 
   int currentIndex = 0;
 
   @override
   void initState() {
-    _pageController = PageController(initialPage: 0);
     super.initState();
   }
 
   @override
   void dispose() {
-    _pageController!.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
+        leadingWidth: 40,
+        toolbarHeight: 48,
+        titleSpacing: 4,
+        centerTitle: true,
+        elevation: 0,
+        leading: InkWell(
+          child: Icon(Icons.arrow_back_ios_rounded),
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+        ),
         title: Text(
           widget.netOptions.reqOptions!.url!,
-          style: const TextStyle(fontSize: 11),
+          maxLines: 3,
+          style: const TextStyle(fontSize: 12),
         ),
-        backgroundColor: theme.scaffoldBackgroundColor,
-        elevation: 1.0,
-        iconTheme: theme.iconTheme,
       ),
       body: PageView.builder(
         controller: _pageController,
@@ -89,7 +96,7 @@ class _LogWidgetState extends State<LogWidget>
   }
 
   void _bottomTap(int value) {
-    _pageController!.animateToPage(
+    _pageController.animateToPage(
       value,
       duration: const Duration(milliseconds: 300),
       curve: Curves.ease,

@@ -1,25 +1,10 @@
-<!-- ## version: 5.0.0
+## version: 4.0.4
+
+- fix ui
 
 ```yaml
 environment:
-  sdk: ">=3.0.0 <4.0.0"
-  flutter: ">=3.10.0"
-
-dependencies:
-  flutter:
-    sdk: flutter
-  dio: ">=5.0.0 <6.0.0"
-``` -->
-
-## version: 4.0.3
-
-- fix readme
-
-## version: 4.0.2
-
-```yaml
-environment:
-  sdk: ">=2.12.0 <5.0.0"
+  sdk: ">=2.12.0 <4.0.0"
   flutter: ">=2.0.0"
 
 dependencies:
@@ -27,6 +12,14 @@ dependencies:
     sdk: flutter
   dio: ">=4.0.0 <6.0.0"
 ```
+
+## version: 4.0.3
+
+- fix readme
+
+## version: 4.0.2
+
+- fix readme
 
 ## version: 4.0.1
 

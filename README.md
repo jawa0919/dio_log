@@ -31,7 +31,7 @@ dio.interceptors.add(DioLogInterceptor());
 
 ```dart
 ///display overlay button
-showDebugBtn(context,btnColor: Colors.blue);
+showDebugBtn(context, btnColor: Colors.blue);
 ///cancel overlay button
 dismissDebugBtn();
 ///overlay button state of display
@@ -41,11 +41,11 @@ debugBtnIsShow()
 ### Or open a log list where you want it to be
 
 ```dart
-Navigator.of(context).push(
-    MaterialPageRoute(
-      builder: (context) => HttpLogListWidget(),
-    ),
-  );
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => HttpLogListWidget(),
+      ),
+    );
 ```
 
 ### Other configurable parameters

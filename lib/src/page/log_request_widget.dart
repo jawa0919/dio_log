@@ -64,15 +64,20 @@ class _LogRequestWidgetState extends State<LogRequestWidget>
               'Tip: long press a key to copy the value to the clipboard',
               style: TextStyle(fontSize: 10, color: Colors.red),
             ),
-            OutlinedButton(
-              onPressed: () {
-                copyClipboard(
-                    context,
-                    'url:${reqOpt.url}\nmethod:${reqOpt.method}\nrequestTime:$requestTime\nresponseTime:$responseTime\n'
-                    'duration:${resOpt?.duration ?? 0}ms\n${dataFormat(reqOpt.data)}'
-                    '\nparams:${toJson(reqOpt.params)}\nheader:${reqOpt.headers}');
-              },
-              child: const Text('copy all'),
+            Container(
+              margin: EdgeInsets.only(top: 8, bottom: 8),
+              height: 32,
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: () {
+                  copyClipboard(
+                      context,
+                      'url:${reqOpt.url}\nmethod:${reqOpt.method}\nrequestTime:$requestTime\nresponseTime:$responseTime\n'
+                      'duration:${resOpt?.duration ?? 0}ms\n${dataFormat(reqOpt.data)}'
+                      '\nparams:${toJson(reqOpt.params)}\nheader:${reqOpt.headers}');
+                },
+                child: const Text('Copy All'),
+              ),
             ),
             _buildKeyValue('url', reqOpt.url),
             _buildKeyValue('method', reqOpt.method),

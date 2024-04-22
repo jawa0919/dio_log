@@ -22,50 +22,38 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
   Widget build(BuildContext context) {
     logMap = LogPoolManager.getInstance().logMap;
     keys = LogPoolManager.getInstance().keys;
-    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Request Logs'),
-        backgroundColor: theme.scaffoldBackgroundColor,
-        elevation: 1.0,
-        iconTheme: theme.iconTheme,
+        leadingWidth: 40,
+        toolbarHeight: 48,
+        titleSpacing: 4,
+        centerTitle: true,
+        elevation: 0,
+        leading: InkWell(
+          child: Icon(Icons.arrow_back_ios_rounded),
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        title: InkWell(
+          child: const Text('Dio Request List'),
+          onLongPress: () {
+            if (debugBtnIsShow()) {
+              dismissDebugBtn();
+            } else {
+              showDebugBtn(context);
+            }
+            setState(() {});
+          },
+        ),
         actions: <Widget>[
-          InkWell(
-            onTap: () {
-              if (debugBtnIsShow()) {
-                dismissDebugBtn();
-              } else {
-                showDebugBtn(context);
-              }
-              setState(() {});
-            },
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Align(
-                child: Text(
-                  debugBtnIsShow() ? 'close overlay' : 'open overlay',
-                  style: theme.textTheme.caption!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ),
-          InkWell(
-            onTap: () {
+          IconButton(
+            icon: Icon(Icons.delete_forever_rounded),
+            onPressed: () {
               LogPoolManager.getInstance().clear();
               setState(() {});
             },
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Align(
-                child: Text(
-                  'clear',
-                  style: theme.textTheme.caption!
-                      .copyWith(fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ),
+          )
         ],
       ),
       body: logMap.isEmpty
@@ -89,9 +77,8 @@ class _HttpLogListWidgetState extends State<HttpLogListWidget> {
     ///格式化请求时间
     var requestTime = getTimeStr1(reqOpt!.requestTime!);
 
-    Color? textColor = LogPoolManager.getInstance().isError(item)
-        ? Colors.red
-        : Theme.of(context).textTheme.bodyText1!.color;
+    Color textColor =
+        LogPoolManager.getInstance().isError(item) ? Colors.red : Colors.black;
     return Card(
       margin: const EdgeInsets.all(8),
       elevation: 6,

@@ -25,44 +25,43 @@ class _LogResponseWidgetState extends State<LogResponseWidget>
     var response = widget.netOptions.resOptions;
     var json = response?.data ?? 'no response';
     return SingleChildScrollView(
-        child: Column(
-      children: <Widget>[
-        Row(
-          children: <Widget>[
-            const SizedBox(width: 10),
-            Text(isShowAll ? 'shrink all' : 'expand all'),
-            Switch(
-              value: isShowAll,
-              onChanged: (check) {
-                isShowAll = check;
-
-                setState(() {});
-              },
-            ),
-            Expanded(
-              child: Slider(
-                value: fontSize,
-                max: 30,
-                min: 1,
-                onChanged: (v) {
-                  fontSize = v;
+      child: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Switch(
+                value: isShowAll,
+                onChanged: (check) {
+                  isShowAll = check;
+                  fontSize = 14;
                   setState(() {});
                 },
               ),
-            ),
-          ],
-        ),
-        const Text(
-          'Tip: long press a key to copy the value to the clipboard',
-          style: TextStyle(
-            fontSize: 10,
-            color: Colors.red,
+              Expanded(
+                child: Slider(
+                  value: fontSize,
+                  max: 30,
+                  min: 1,
+                  onChanged: (v) {
+                    fontSize = v;
+                    setState(() {});
+                  },
+                ),
+              ),
+            ],
           ),
-        ),
-        _buildJsonView('headers', response?.headers),
-        _buildJsonView('response.data', json),
-      ],
-    ));
+          const Text(
+            'Tip: long press a key to copy the value to the clipboard',
+            style: TextStyle(
+              fontSize: 10,
+              color: Colors.red,
+            ),
+          ),
+          _buildJsonView('headers', response?.headers),
+          _buildJsonView('response.data', json),
+        ],
+      ),
+    );
   }
 
   ///构建json树的展示
@@ -70,21 +69,27 @@ class _LogResponseWidgetState extends State<LogResponseWidget>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        ListTile(
-          title: Align(
-            alignment: Alignment.bottomLeft,
-            child: Text(
-              '$key:',
-              style: TextStyle(
-                fontSize: fontSize,
+        Container(
+          margin: EdgeInsets.only(top: 8, bottom: 8, right: 8, left: 8),
+          height: 32,
+          width: double.infinity,
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  '$key:',
+                  style: TextStyle(
+                    fontSize: fontSize,
+                  ),
+                ),
               ),
-            ),
-          ),
-          trailing: OutlinedButton(
-            onPressed: () {
-              copyClipboard(context, toJson(json));
-            },
-            child: Text('copy $key json'),
+              OutlinedButton(
+                onPressed: () {
+                  copyClipboard(context, toJson(json));
+                },
+                child: Text('Copy $key'),
+              ),
+            ],
           ),
         ),
         SingleChildScrollView(

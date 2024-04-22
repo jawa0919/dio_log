@@ -5,14 +5,14 @@ import 'http_log_list_widget.dart';
 OverlayEntry? itemEntry;
 
 ///显示全局悬浮调试按钮
-showDebugBtn(BuildContext context, {Widget? button, Color? btnColor}) {
+showDebugBtn(BuildContext context, {Color? btnColor}) {
   /// widget第一次渲染完成
   Future.delayed(const Duration(milliseconds: 500)).then((value) {
     try {
       dismissDebugBtn();
       itemEntry = OverlayEntry(
-          builder: (BuildContext context) =>
-              button ?? DraggableButtonWidget(btnColor: btnColor));
+        builder: (_) => DraggableButtonWidget(btnColor: btnColor),
+      );
 
       /// 显示悬浮menu
       Overlay.of(context)?.insert(itemEntry!);
@@ -51,6 +51,8 @@ class _DraggableButtonWidgetState extends State<DraggableButtonWidget> {
   late double screenHeight;
   late double screenTop;
 
+  bool showWidget = false;
+
   @override
   void initState() {
     super.initState();
@@ -61,27 +63,30 @@ class _DraggableButtonWidgetState extends State<DraggableButtonWidget> {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
     screenTop = MediaQuery.of(context).padding.top;
-    Color color = widget.btnColor ?? Colors.grey;
+    Color color = widget.btnColor ?? Theme.of(context).primaryColor;
     Widget w = GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => const HttpLogListWidget(),
-          ),
-        );
+        if (showWidget) return;
+        showWidget = true;
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => const HttpLogListWidget()))
+            .then((_) => showWidget = false);
       },
       onPanUpdate: _dragUpdate,
       child: Container(
+        alignment: Alignment.center,
         width: btnSize,
         height: btnSize,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: color.withOpacity(0.3),
         ),
-        child: Icon(
-          Icons.developer_board,
-          color: color.withOpacity(0.8),
-          size: btnSize - 8,
+        child: Text(
+          "Dio",
+          style: TextStyle(
+            fontSize: btnSize - 24,
+            color: color.withOpacity(0.8),
+          ),
         ),
       ),
     );
